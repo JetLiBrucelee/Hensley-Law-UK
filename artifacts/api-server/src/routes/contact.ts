@@ -18,12 +18,19 @@ router.post("/contact", async (req, res) => {
     return;
   }
 
+  const fromEmail = process.env.RESEND_FROM_EMAIL;
+  if (!fromEmail) {
+    req.log.error("RESEND_FROM_EMAIL is not configured");
+    res.status(500).json({ success: false, error: "Email service not configured." });
+    return;
+  }
+
   const resend = new Resend(apiKey);
 
   let data, error;
   try {
     ({ data, error } = await resend.emails.send({
-      from: `Hensley Legal <${process.env.RESEND_FROM_EMAIL ?? "noreply@keystoneoffshoreinc.online"}>`,
+      from: `Hensley Legal <${fromEmail}>`,
       to: "theodorelegal@attorneytwilliamhensley.com",
       replyTo: email,
       subject: `New Enquiry: ${subject}`,
