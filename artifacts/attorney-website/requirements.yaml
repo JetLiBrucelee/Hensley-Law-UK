@@ -1,0 +1,17 @@
+packages:
+  "framer-motion": "Smooth scroll animations and premium page transitions"
+  "react-hook-form": "Form state management"
+  "@hookform/resolvers": "Zod resolver for form validation"
+  "zod": "Schema validation for contact form"
+
+images:
+  - path: "artifacts/attorney-website/public/images/navy-texture.png"
+    description: "Abstract subtle dark navy background texture with very faint gold light leaks, professional, corporate, extremely dark, suitable for a law firm website background"
+    aspect_ratio: "16:9"
+  - path: "artifacts/attorney-website/public/images/law-library.png"
+    description: "Extremely blurred depth of field photo of a prestigious traditional English law library with leather-bound books, dark academia aesthetic, dark navy and gold tones"
+    aspect_ratio: "16:9"
+
+notes:
+  - Static single-page website with mock mutations for contact form
+  - Requires existing attorney-portrait.png in src/assets
