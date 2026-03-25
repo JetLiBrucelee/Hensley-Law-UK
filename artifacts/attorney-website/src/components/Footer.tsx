@@ -35,6 +35,7 @@ export default function Footer() {
                 { label: 'About Mr. Hensley', href: '#about' },
                 { label: 'Practice Areas', href: '#practice-areas' },
                 { label: 'Client Testimonials', href: '#testimonials' },
+                { label: 'Request a Consultation', href: '#contact' },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="flex items-center gap-2 hover:text-primary transition-colors text-sm group">
@@ -50,7 +51,15 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-serif text-lg mb-6">Expertise</h3>
             <ul className="space-y-3">
-              {['Criminal Defence', 'Family & Divorce', 'Commercial Law', 'Property & Conveyancing'].map((area) => (
+              {[
+                'Criminal Defence',
+                'Family Law',
+                'Commercial Law',
+                'Property & Conveyancing',
+                'Corporate Finance Law',
+                'Financial Regulation',
+                'Securities & Investment Law',
+              ].map((area) => (
                 <li key={area}>
                   <a href="#practice-areas" className="flex items-center gap-2 hover:text-primary transition-colors text-sm group">
                     <ChevronRight className="w-4 h-4 text-primary/50 group-hover:text-primary transition-colors" />

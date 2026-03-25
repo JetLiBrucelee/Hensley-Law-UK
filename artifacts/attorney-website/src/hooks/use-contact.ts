@@ -10,18 +10,17 @@ export const contactSchema = z.object({
 
 export type ContactFormData = z.infer<typeof contactSchema>;
 
-// Mock mutation since this is a static frontend
 export function useSubmitContact() {
   return useMutation({
     mutationFn: async (data: ContactFormData) => {
-      // Simulate network latency
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      
-      // In a real app, this would be:
-      // const res = await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-      // if (!res.ok) throw new Error(...)
-      
-      return { success: true, message: "Your enquiry has been securely transmitted." };
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Failed to send enquiry.");
+      return json;
     },
   });
 }

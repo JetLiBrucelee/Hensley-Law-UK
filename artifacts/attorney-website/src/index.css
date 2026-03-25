@@ -23,6 +23,11 @@
   --color-card-foreground: hsl(var(--card-foreground));
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 :root {
   /* Off-white crisp background for light sections */
   --background: 210 20% 98%;

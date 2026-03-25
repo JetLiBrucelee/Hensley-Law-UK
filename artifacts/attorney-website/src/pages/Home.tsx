@@ -18,7 +18,10 @@ import {
   MapPin,
   Mail,
   CheckCircle2,
-  Clock
+  Clock,
+  TrendingUp,
+  FileCheck2,
+  BarChart3
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useSubmitContact, contactSchema, type ContactFormData } from "@/hooks/use-contact";
@@ -230,7 +233,10 @@ export default function Home() {
               { icon: Briefcase, title: "Employment Law", desc: "Resolving complex workplace disputes, tribunal representation, and executive severance negotiations." },
               { icon: Globe, title: "Immigration & Visa", desc: "Expert guidance through the intricacies of UK Visas and Immigration (UKVI) applications." },
               { icon: HomeIcon, title: "Property & Conveyancing", desc: "Meticulous handling of high-value residential and commercial real estate transactions." },
-              { icon: ScrollText, title: "Wills & Probate", desc: "Safeguarding your legacy with robust estate planning, trusts, and contested probate resolution." }
+              { icon: ScrollText, title: "Wills & Probate", desc: "Safeguarding your legacy with robust estate planning, trusts, and contested probate resolution." },
+              { icon: TrendingUp, title: "Corporate Finance Law", desc: "Expert advisory on mergers, acquisitions, leveraged buyouts, and complex capital market transactions across the City and beyond." },
+              { icon: FileCheck2, title: "Financial Regulation", desc: "Specialist counsel navigating FCA and PRA regulations, financial services compliance, and regulatory investigations for banks and investment firms." },
+              { icon: BarChart3, title: "Securities & Investment Law", desc: "Authoritative advice on equities, bonds, derivatives, and investment fund disputes under UK and international securities law." },
             ].map((area, idx) => (
               <motion.div 
                 key={area.title}
@@ -306,32 +312,29 @@ export default function Home() {
             <h3 className="text-4xl font-serif text-white">Words From Our <span className="italic">Clients</span></h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+          {(() => {
+            const testimonials = [
               { text: "Mr. Hensley's command of commercial law is unparalleled. His strategic intervention in our shareholder dispute saved our firm millions. A brilliant solicitor who commands absolute respect in the room.", author: "James T., London", role: "Commercial Litigation" },
               { text: "Navigating a highly complex divorce was terrifying until Theodore took my case. His discretion, compassion, and fierce protection of my assets were extraordinary. I cannot recommend his chambers highly enough.", author: "Eleanor W., Surrey", role: "Family Law" },
-              { text: "When facing serious allegations, you need someone who knows the system inside out. Theodore's rigorous preparation dismantled the prosecution's case entirely. He gave me my life back.", author: "David M., Manchester", role: "Criminal Defence" }
-            ].map((testimonial, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="bg-white/5 p-8 rounded-sm relative border border-white/5 hover:border-primary/30 transition-colors"
-              >
-                <Quote className="w-12 h-12 text-primary/20 absolute top-6 right-6" />
-                <div className="flex gap-1 text-primary mb-6">
-                  {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+              { text: "When facing serious allegations, you need someone who knows the system inside out. Theodore's rigorous preparation dismantled the prosecution's case entirely. He gave me my life back.", author: "David M., Manchester", role: "Criminal Defence" },
+              { text: "Theodore guided our firm through an exceptionally complex FCA regulatory review. His encyclopaedic knowledge of financial services law and calm authority under pressure were invaluable. We wouldn't trust anyone else with matters of this gravity.", author: "Robert K., Edinburgh", role: "Financial Regulation" },
+              { text: "Following a contentious securities dispute involving substantial City-based holdings, Theodore's incisive legal strategy and command of the courtroom delivered a result that exceeded all expectations. Truly exceptional counsel.", author: "Victoria H., London", role: "Securities & Investment Law" },
+            ];
+            return (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {testimonials.slice(0, 3).map((testimonial, idx) => (
+                    <TestimonialCard key={idx} testimonial={testimonial} idx={idx} />
+                  ))}
                 </div>
-                <p className="text-gray-300 italic mb-8 relative z-10 leading-relaxed">"{testimonial.text}"</p>
-                <div className="border-t border-white/10 pt-4 mt-auto">
-                  <p className="text-white font-serif font-bold">{testimonial.author}</p>
-                  <p className="text-primary text-sm font-sans tracking-wide uppercase mt-1">{testimonial.role}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+                  {testimonials.slice(3).map((testimonial, idx) => (
+                    <TestimonialCard key={idx + 3} testimonial={testimonial} idx={idx + 3} />
+                  ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </>
+            );
+          })()}
 
         </div>
       </section>
@@ -379,11 +382,18 @@ export default function Home() {
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none"
                   >
                     <option value="">Select an area of practice...</option>
-                    <option value="criminal">Criminal Defence</option>
-                    <option value="family">Family Law</option>
-                    <option value="corporate">Commercial & Corporate</option>
-                    <option value="injury">Personal Injury</option>
-                    <option value="other">Other Matter</option>
+                    <option value="Criminal Defence">Criminal Defence</option>
+                    <option value="Family Law">Family Law</option>
+                    <option value="Personal Injury">Personal Injury</option>
+                    <option value="Commercial Law">Commercial Law</option>
+                    <option value="Employment Law">Employment Law</option>
+                    <option value="Immigration & Visa">Immigration & Visa</option>
+                    <option value="Property & Conveyancing">Property & Conveyancing</option>
+                    <option value="Wills & Probate">Wills & Probate</option>
+                    <option value="Corporate Finance Law">Corporate Finance Law</option>
+                    <option value="Financial Regulation">Financial Regulation</option>
+                    <option value="Securities & Investment Law">Securities & Investment Law</option>
+                    <option value="Other Matter">Other Matter</option>
                   </select>
                   {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject.message}</p>}
                 </div>
@@ -475,5 +485,27 @@ function StarIcon() {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
       <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
     </svg>
+  );
+}
+
+function TestimonialCard({ testimonial, idx }: { testimonial: { text: string; author: string; role: string }; idx: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.15, duration: 0.6 }}
+      className="bg-white/5 p-8 rounded-sm relative border border-white/5 hover:border-primary/30 transition-colors flex flex-col"
+    >
+      <Quote className="w-12 h-12 text-primary/20 absolute top-6 right-6" />
+      <div className="flex gap-1 text-primary mb-6">
+        {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+      </div>
+      <p className="text-gray-300 italic mb-8 relative z-10 leading-relaxed flex-1">"{testimonial.text}"</p>
+      <div className="border-t border-white/10 pt-4">
+        <p className="text-white font-serif font-bold">{testimonial.author}</p>
+        <p className="text-primary text-sm font-sans tracking-wide uppercase mt-1">{testimonial.role}</p>
+      </div>
+    </motion.div>
   );
 }
