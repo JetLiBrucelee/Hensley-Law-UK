@@ -25,7 +25,6 @@ import { useSubmitContact, contactSchema, type ContactFormData } from "@/hooks/u
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Note: Asset must exist based on prompt instructions
 import attorneyPortrait from "@/assets/attorney-portrait.png";
 
 export default function Home() {
@@ -173,8 +172,8 @@ export default function Home() {
               </motion.div>
               
               <motion.div variants={fadeInUp} className="mt-10">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Signature_of_John_Hancock.svg/1200px-Signature_of_John_Hancock.svg.png" alt="Signature" className="h-16 opacity-40 filter grayscale invert" style={{ mixBlendMode: 'multiply' }} />
-                <p className="font-serif font-bold text-secondary mt-2">Theodore W. Hensley</p>
+                <p className="font-serif italic text-4xl text-secondary/70 tracking-wide select-none">Theodore W. Hensley</p>
+                <div className="h-px w-48 bg-primary/30 mt-1 mb-2"></div>
                 <p className="text-sm text-muted-foreground uppercase tracking-widest">Senior Solicitor</p>
               </motion.div>
             </motion.div>
