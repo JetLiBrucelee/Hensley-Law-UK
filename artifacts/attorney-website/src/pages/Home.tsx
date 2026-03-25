@@ -133,7 +133,7 @@ export default function Home() {
               <img 
                 src={attorneyPortrait} 
                 alt="Theodore William Hensley, Solicitor" 
-                className="w-full h-full object-cover object-center rounded-sm relative z-0 filter contrast-125 saturate-110"
+                className="w-full h-full object-cover object-top rounded-sm relative z-0"
               />
             </motion.div>
 
