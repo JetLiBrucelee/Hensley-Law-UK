@@ -23,7 +23,7 @@ router.post("/contact", async (req, res) => {
   let data, error;
   try {
     ({ data, error } = await resend.emails.send({
-      from: "Hensley Legal <noreply@keystoneoffshoreinc.online>",
+      from: `Hensley Legal <${process.env.RESEND_FROM_EMAIL ?? "noreply@keystoneoffshoreinc.online"}>`,
       to: "theodorelegal@attorneytwilliamhensley.com",
       replyTo: email,
       subject: `New Enquiry: ${subject}`,
