@@ -224,7 +224,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: ShieldCheck, title: "Criminal Defence", desc: "Rigorous defence strategies for serious allegations across all levels of the criminal justice system." },
-              { icon: HeartPulse, title: "Family Law", desc: "Discrete, compassionate counsel for high-net-worth divorce, child arrangements, and financial settlements." },
+              { icon: HeartPulse, title: "Family Law", desc: "Discreet, compassionate counsel for high-net-worth divorce, child arrangements, and financial settlements." },
               { icon: Scale, title: "Personal Injury", desc: "Fierce advocacy securing rightful compensation for catastrophic injuries and clinical negligence." },
               { icon: Building2, title: "Commercial Law", desc: "Strategic advice on contracts, corporate disputes, and business structuring for UK enterprises." },
               { icon: Briefcase, title: "Employment Law", desc: "Resolving complex workplace disputes, tribunal representation, and executive severance negotiations." },
@@ -273,7 +273,7 @@ export default function Home() {
                 { title: "Expert Legal Knowledge", desc: "Decades of deep, specialised understanding of English law and court procedures, ensuring highly strategic representation." },
                 { title: "Client-Centred Approach", desc: "You are never just a case file. We provide tailored, responsive counsel that prioritises your unique circumstances." },
                 { title: "Proven Track Record", desc: "A history of securing favourable verdicts and settlements in complex, high-stakes environments." },
-                { title: "Confidential & Discrete", desc: "Absolute discretion is guaranteed. We regularly handle sensitive matters for high-profile clients." }
+                { title: "Confidential & Discreet", desc: "Absolute discretion is guaranteed. We regularly handle sensitive matters for high-profile clients." }
               ].map((feature, idx) => (
                 <motion.div 
                   key={feature.title}
