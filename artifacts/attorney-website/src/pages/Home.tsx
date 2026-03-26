@@ -121,14 +121,14 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative hidden lg:block h-[80vh]"
+              className="relative block h-[340px] lg:h-[80vh] mt-8 lg:mt-0"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent z-10"></div>
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-secondary z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-secondary z-10 hidden lg:block"></div>
               
-              {/* Decorative Frame */}
-              <div className="absolute -inset-4 border border-primary/20 rounded-sm z-0 translate-x-4 translate-y-4"></div>
-              <div className="absolute -inset-4 border border-primary/20 rounded-sm z-0 -translate-x-4 -translate-y-4"></div>
+              {/* Decorative Frame — desktop only to avoid mobile overflow */}
+              <div className="absolute -inset-4 border border-primary/20 rounded-sm z-0 translate-x-4 translate-y-4 hidden lg:block"></div>
+              <div className="absolute -inset-4 border border-primary/20 rounded-sm z-0 -translate-x-4 -translate-y-4 hidden lg:block"></div>
               
               <img 
                 src={attorneyPortrait} 
