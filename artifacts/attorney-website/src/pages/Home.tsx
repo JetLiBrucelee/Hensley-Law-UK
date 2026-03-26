@@ -121,7 +121,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative block h-[340px] lg:h-[80vh] mt-8 lg:mt-0"
+              className="relative block h-[55vw] min-h-[260px] max-h-[400px] lg:h-[80vh] lg:max-h-none mt-8 lg:mt-0"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent z-10"></div>
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-secondary z-10 hidden lg:block"></div>
